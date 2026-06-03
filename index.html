@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///C:/Users/3G%20-%20Glauba/Downloads/extratos_3g_1.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Extratos 3G</title>
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0f14;--s1:#13161e;--s2:#191c27;--s3:#1e2233;
+  --bd:#252836;--bd2:#2f3347;
+  --green:#34d399;--green-bg:rgba(52,211,153,.09);
+  --red:#fb7185;--red-bg:rgba(251,113,133,.09);
+  --blue:#818cf8;--blue-bg:rgba(129,140,248,.09);
+  --yellow:#fbbf24;--yellow-bg:rgba(251,191,36,.09);
+  --text:#dde1ef;--m1:#8b90a8;--m2:#5c6278;
+  --fn:'DM Mono',monospace;--fh:'Syne',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--fn);font-size:13px;min-height:100vh;}
+
+/* LOGIN */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px;}
+.login-box{background:var(--s1);border:1px solid var(--bd);border-radius:14px;padding:36px 32px;width:100%;max-width:360px;}
+.login-logo{font-family:var(--fh);font-size:22px;font-weight:800;color:#fff;margin-bottom:4px;}
+.login-sub{font-size:11px;color:var(--m2);margin-bottom:26px;letter-spacing:.4px;}
+.f{margin-bottom:13px;}
+.f label{display:block;font-size:10px;color:var(--m1);text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px;}
+.f input,.f select{width:100%;background:var(--s2);border:1px solid var(--bd);border-radius:7px;padding:9px 12px;color:var(--text);font-family:var(--fn);font-size:13px;outline:none;transition:border-color .15s;}
+.f input:focus{border-color:var(--blue);}
+.btn-pri{width:100%;background:var(--blue);border:none;border-radius:7px;padding:11px;color:#fff;font-family:var(--fh);font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.3px;transition:opacity .15s;}
+.btn-pri:hover{opacity:.85;}
+.btn-pri:disabled{opacity:.4;cursor:not-allowed;}
+.err{font-size:11px;color:var(--red);margin-top:10px;text-align:center;min-height:16px;}
+
+/* APP */
+#app{display:none;}
+.topbar{display:flex;align-items:center;gap:10px;padding:12px 22px;background:var(--s1);border-bottom:1px solid var(--bd);flex-wrap:wrap;}
+.topbar-logo{font-family:var(--fh);font-size:15px;font-weight:800;color:#fff;margin-right:6px;white-space:nowrap;}
+.acct-btns{display:flex;gap:6px;}
+.abtn{background:var(--s2);border:1px solid var(--bd);border-radius:7px;padding:6px 13px;font-family:var(--fh);font-size:11px;font-weight:600;color:var(--m1);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.abtn:hover{color:var(--text);}
+.abtn.on{border-color:var(--blue);color:#fff;background:var(--s3);}
+.user-chip{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:11px;color:var(--m1);}
+.avatar{width:26px;height:26px;border-radius:50%;background:var(--blue-bg);border:1px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--blue);font-weight:700;flex-shrink:0;}
+.icon-btn{background:none;border:1px solid var(--bd);border-radius:5px;padding:4px 10px;color:var(--m2);font-size:10px;cursor:pointer;font-family:var(--fn);transition:all .15s;}
+.icon-btn:hover{color:var(--text);border-color:var(--bd2);}
+.icon-btn.danger:hover{color:var(--red);border-color:var(--red);}
+
+/* BANNER */
+#prov-banner{background:var(--yellow-bg);border:1px solid var(--yellow);border-radius:8px;padding:10px 16px;margin:14px 22px 0;font-size:12px;color:var(--yellow);display:none;align-items:center;justify-content:space-between;gap:12px;}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:16px 22px 0;}
+@media(max-width:600px){.cards{grid-template-columns:repeat(2,1fr);}}
+.card{background:var(--s1);border:1px solid var(--bd);border-radius:9px;padding:13px 15px;}
+.card-l{font-size:10px;color:var(--m2);text-transform:uppercase;letter-spacing:.7px;margin-bottom:4px;}
+.card-v{font-family:var(--fh);font-size:17px;font-weight:700;}
+.card-s{font-size:10px;color:var(--m2);margin-top:2px;}
+
+/* TABS + TOOLBAR */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--bd);margin:14px 22px 0;}
+.tab{padding:8px 16px;font-family:var(--fh);font-size:11px;font-weight:600;cursor:pointer;border:none;background:none;color:var(--m2);border-bottom:2px solid transparent;letter-spacing:.3px;transition:all .15s;}
+.tab:hover{color:var(--text);}
+.tab.ta.on{color:var(--blue);border-bottom-color:var(--blue);}
+.tab.tc.on{color:var(--green);border-bottom-color:var(--green);}
+.tab.td.on{color:var(--red);border-bottom-color:var(--red);}
+.toolbar{display:flex;align-items:center;gap:8px;padding:12px 22px 10px;flex-wrap:wrap;}
+.srch{background:var(--s1);border:1px solid var(--bd);border-radius:6px;padding:6px 11px;color:var(--text);font-family:var(--fn);font-size:12px;outline:none;width:190px;transition:border-color .15s;}
+.srch::placeholder{color:var(--m2);}
+.srch:focus{border-color:var(--blue);}
+.sel{background:var(--s1);border:1px solid var(--bd);border-radius:6px;padding:6px 10px;color:var(--text);font-family:var(--fn);font-size:12px;outline:none;cursor:pointer;}
+.cnt-lbl{font-size:11px;color:var(--m2);margin-left:auto;}
+.add-btn{background:var(--green-bg);border:1px solid var(--green);border-radius:6px;padding:6px 13px;color:var(--green);font-family:var(--fh);font-size:11px;font-weight:600;cursor:pointer;transition:opacity .15s;}
+.add-btn:hover{opacity:.8;}
+
+/* TABLE */
+.tw{padding:0 22px 32px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+thead tr{border-bottom:1px solid var(--bd2);}
+th{padding:7px 9px;font-family:var(--fh);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--m2);text-align:left;white-space:nowrap;}
+th.r{text-align:right;}
+tbody tr{border-bottom:1px solid var(--bd);cursor:pointer;transition:background .1s;}
+tbody tr:hover{background:var(--s1);}
+tbody tr.done{opacity:.45;}
+td{padding:8px 9px;font-size:12px;vertical-align:middle;}
+td.dt{color:var(--m1);white-space:nowrap;width:82px;}
+td.val{text-align:right;font-weight:500;white-space:nowrap;}
+.pill{display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;}
+.pill-c{background:var(--green-bg);color:var(--green);}
+.pill-d{background:var(--red-bg);color:var(--red);}
+.cat-badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:10px;background:var(--s3);color:var(--m1);margin-left:4px;}
+.note-icon{font-size:10px;color:var(--yellow);margin-left:3px;}
+.check-icon{color:var(--green);margin-right:3px;font-size:11px;}
+.none-msg{text-align:center;padding:40px;color:var(--m2);font-family:var(--fh);}
+
+/* USERS PAGE */
+#users-page{display:none;padding:20px 22px;}
+.page-title{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;margin-bottom:16px;}
+.users-grid{display:grid;gap:10px;}
+.user-card{background:var(--s1);border:1px solid var(--bd);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:14px;}
+.user-info{flex:1;}
+.user-name{font-family:var(--fh);font-size:13px;font-weight:700;color:#fff;}
+.user-perms{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;}
+.perm-tag{padding:2px 8px;border-radius:4px;font-size:10px;font-family:var(--fh);font-weight:600;}
+.perm-all{background:var(--blue-bg);color:var(--blue);}
+.perm-cred{background:var(--green-bg);color:var(--green);}
+.perm-deb{background:var(--red-bg);color:var(--red);}
+.perm-temp{background:var(--yellow-bg);color:var(--yellow);}
+.new-user-btn{background:var(--blue-bg);border:1px solid var(--blue);border-radius:7px;padding:8px 16px;color:var(--blue);font-family:var(--fh);font-size:12px;font-weight:600;cursor:pointer;margin-bottom:14px;transition:opacity .15s;}
+.new-user-btn:hover{opacity:.8;}
+.perm-checks{display:flex;gap:14px;flex-wrap:wrap;padding:6px 0;}
+.perm-checks label{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--m1);cursor:pointer;}
+.perm-checks input{width:15px;height:15px;accent-color:var(--blue);}
+
+/* MODALS */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100;padding:20px;}
+.overlay.open{display:flex;}
+.modal{background:var(--s1);border:1px solid var(--bd2);border-radius:12px;width:100%;max-height:90vh;overflow-y:auto;}
+.modal-head{padding:18px 20px 13px;border-bottom:1px solid var(--bd);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.modal-title{font-family:var(--fh);font-size:15px;font-weight:700;color:#fff;}
+.modal-sub{font-size:11px;color:var(--m1);margin-top:2px;}
+.close-btn{background:none;border:none;color:var(--m2);font-size:18px;cursor:pointer;line-height:1;padding:0;}
+.close-btn:hover{color:var(--text);}
+.modal-body{padding:16px 20px;}
+.mf{margin-bottom:13px;}
+.mf label{display:block;font-size:10px;color:var(--m1);text-transform:uppercase;letter-spacing:.6px;margin-bottom:5px;}
+.mf input,.mf select,.mf textarea{width:100%;background:var(--s2);border:1px solid var(--bd);border-radius:7px;padding:8px 11px;color:var(--text);font-family:var(--fn);font-size:12px;outline:none;resize:vertical;transition:border-color .15s;}
+.mf input:focus,.mf select:focus,.mf textarea:focus{border-color:var(--blue);}
+.mf textarea{min-height:65px;}
+.check-row{display:flex;align-items:center;gap:8px;padding:8px 0;}
+.check-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--green);cursor:pointer;}
+.check-row label{font-size:12px;color:var(--m1);cursor:pointer;}
+.modal-foot{padding:13px 20px;border-top:1px solid var(--bd);display:flex;gap:8px;justify-content:flex-end;}
+.mb{border-radius:7px;padding:8px 18px;font-family:var(--fh);font-size:12px;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.mb:hover{opacity:.8;}
+.mb-save{background:var(--blue);color:#fff;}
+.mb-del{background:var(--red-bg);color:var(--red);border:1px solid var(--red)!important;}
+.mb-sec{background:var(--s3);color:var(--m1);border:1px solid var(--bd);}
+.act-item{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--bd);font-size:11px;color:var(--m1);}
+.act-item:last-child{border:none;}
+.act-who{color:var(--blue);font-weight:500;}
+.act-time{color:var(--m2);margin-left:auto;white-space:nowrap;}
+
+/* LOADING OVERLAY */
+#loading{position:fixed;inset:0;background:rgba(13,15,20,.85);display:none;align-items:center;justify-content:center;z-index:200;flex-direction:column;gap:12px;}
+#loading.show{display:flex;}
+.spinner{width:32px;height:32px;border:3px solid var(--bd2);border-top-color:var(--blue);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-txt{font-size:12px;color:var(--m1);}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--s2);border:1px solid var(--bd2);border-radius:8px;padding:11px 18px;font-size:12px;color:var(--text);z-index:300;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading"><div class="spinner"></div><div class="loading-txt" id="loading-txt">Carregando...</div></div>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">📊 Extratos 3G</div>
+    <div class="login-sub">Sistema colaborativo de extratos bancários</div>
+    <div class="f"><label>Usuário</label><input type="text" id="l-user" placeholder="seu usuário" onkeydown="if(event.key===&#39;Enter&#39;)doLogin()"></div>
+    <div class="f"><label>Senha</label><input type="password" id="l-pass" placeholder="••••••••" onkeydown="if(event.key===&#39;Enter&#39;)doLogin()"></div>
+    <button class="btn-pri" id="login-btn" onclick="doLogin()">Entrar</button>
+    <div class="err" id="l-err"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="topbar">
+    <span class="topbar-logo">📊 Extratos 3G</span>
+    <div class="acct-btns" id="acct-btns">
+      <button class="abtn on" onclick="setAcct(0,this)">MARILISY CORRETORA</button>
+      <button class="abtn" onclick="setAcct(1,this)">3G CORRETORA</button>
+    </div>
+    <div class="user-chip">
+      <div class="avatar" id="u-av"></div>
+      <span id="u-label"></span>
+      <button class="icon-btn" id="admin-btn" onclick="showUsers()" style="display:none">👥 Usuários</button>
+      <button class="icon-btn" onclick="showChpass()">🔑 Senha</button>
+      <button class="icon-btn danger" onclick="doLogout()">Sair</button>
+    </div>
+  </div>
+
+  <div id="prov-banner">
+    <span>⚠️ Você está usando uma senha provisória. Defina sua senha agora.</span>
+    <button class="icon-btn" onclick="showChpass()">Alterar senha</button>
+  </div>
+
+  <!-- EXTRATOS VIEW -->
+  <div id="extratos-view">
+    <div class="cards">
+      <div class="card"><div class="card-l">Total Créditos</div><div class="card-v" style="color:var(--green)" id="c1"></div><div class="card-s" id="c1s"></div></div>
+      <div class="card"><div class="card-l">Total Débitos</div><div class="card-v" style="color:var(--red)" id="c2"></div><div class="card-s" id="c2s"></div></div>
+      <div class="card"><div class="card-l">Resultado</div><div class="card-v" id="c3"></div><div class="card-s" id="c3s"></div></div>
+    </div>
+    <div class="tabs" id="tabs-row"></div>
+    <div class="toolbar">
+      <input class="srch" type="text" id="srch" placeholder="Buscar…" oninput="render()">
+      <select class="sel" id="mes-sel" onchange="render()"><option value="">Todos os meses</option></select>
+      <span class="cnt-lbl" id="cnt"></span>
+      <button class="add-btn" onclick="openAdd()">+ Novo lançamento</button>
+    </div>
+    <div class="tw">
+      <table><thead><tr id="thead-row"></tr></thead><tbody id="tbody"></tbody></table>
+      <div class="none-msg" id="none-msg" style="display:none">Nenhum lançamento encontrado.</div>
+    </div>
+  </div>
+
+  <!-- USERS PAGE -->
+  <div id="users-page">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+      <div class="page-title" style="margin:0">👥 Gerenciar Usuários</div>
+      <button class="icon-btn" onclick="showExtrato()">← Voltar</button>
+    </div>
+    <button class="new-user-btn" onclick="openNewUser()">+ Cadastrar novo usuário</button>
+    <div class="users-grid" id="users-grid"></div>
+  </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="overlay" id="det-ov" onclick="if(event.target===this)closeDet()">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-head">
+      <div><div class="modal-title" id="det-title"></div><div class="modal-sub" id="det-sub"></div></div>
+      <button class="close-btn" onclick="closeDet()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="mf"><label>Categoria</label>
+        <select id="det-cat"><option value="">— sem categoria —</option><option>Comissão</option><option>Repasse</option><option>Imposto</option><option>Salário</option><option>Fornecedor</option><option>Boleto</option><option>Operadora</option><option>Transferência</option><option>Despesa</option><option>Outro</option></select>
+      </div>
+      <div class="mf"><label>Anotação</label><textarea id="det-note" placeholder="Observação…"></textarea></div>
+      <div class="check-row"><input type="checkbox" id="det-done"><label for="det-done">Marcar como conferido</label></div>
+      <div style="margin-top:10px">
+        <div style="font-size:10px;color:var(--m2);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px">Histórico</div>
+        <div id="det-log"></div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="mb mb-sec" onclick="closeDet()">Cancelar</button>
+      <button class="mb mb-save" onclick="saveDet()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD MODAL -->
+<div class="overlay" id="add-ov" onclick="if(event.target===this)closeAdd()">
+  <div class="modal" style="max-width:460px">
+    <div class="modal-head"><div><div class="modal-title">Novo lançamento</div></div><button class="close-btn" onclick="closeAdd()">✕</button></div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="mf"><label>Data</label><input type="date" id="a-date"></div>
+        <div class="mf"><label>Tipo</label><select id="a-tipo"><option value="cred">Crédito (+)</option><option value="deb">Débito (-)</option></select></div>
+      </div>
+      <div class="mf"><label>Nome / Descrição</label><input type="text" id="a-desc" placeholder="Nome da pessoa ou empresa"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="mf"><label>Valor (R$)</label><input type="number" id="a-val" placeholder="0,00" step="0.01" min="0"></div>
+        <div class="mf"><label>Documento</label><input type="text" id="a-doc" placeholder="PIX, boleto..."></div>
+      </div>
+      <div class="mf"><label>Categoria</label><select id="a-cat"><option value="">— sem categoria —</option><option>Comissão</option><option>Repasse</option><option>Imposto</option><option>Salário</option><option>Fornecedor</option><option>Boleto</option><option>Operadora</option><option>Transferência</option><option>Despesa</option><option>Outro</option></select></div>
+      <div class="mf"><label>Anotação</label><textarea id="a-note" placeholder="Observação opcional…"></textarea></div>
+    </div>
+    <div class="modal-foot"><button class="mb mb-sec" onclick="closeAdd()">Cancelar</button><button class="mb mb-save" onclick="saveAdd()">Adicionar</button></div>
+  </div>
+</div>
+
+<!-- USER MODAL -->
+<div class="overlay" id="usr-ov" onclick="if(event.target===this)closeUsr()">
+  <div class="modal" style="max-width:420px">
+    <div class="modal-head"><div><div class="modal-title" id="usr-title">Novo Usuário</div></div><button class="close-btn" onclick="closeUsr()">✕</button></div>
+    <div class="modal-body">
+      <div class="mf"><label>Nome de usuário</label><input type="text" id="usr-name" placeholder="ex: joao.silva"></div>
+      <div class="mf"><label>Senha provisória</label><input type="password" id="usr-pass" placeholder="Senha inicial do usuário"></div>
+      <div class="mf"><label>Acesso às abas</label>
+        <div class="perm-checks">
+          <label><input type="checkbox" id="p-all"> Todos</label>
+          <label><input type="checkbox" id="p-cred"> Créditos</label>
+          <label><input type="checkbox" id="p-deb"> Débitos</label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="mb mb-del" id="usr-del-btn" onclick="deleteUser()" style="display:none">Excluir</button>
+      <button class="mb mb-sec" onclick="closeUsr()">Cancelar</button>
+      <button class="mb mb-save" onclick="saveUser()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- CHANGE PASS MODAL -->
+<div class="overlay" id="cp-ov" onclick="if(event.target===this)closeChpass()">
+  <div class="modal" style="max-width:380px">
+    <div class="modal-head"><div><div class="modal-title">Alterar Senha</div></div><button class="close-btn" onclick="closeChpass()">✕</button></div>
+    <div class="modal-body">
+      <div class="mf"><label>Nova senha</label><input type="password" id="cp-new" placeholder="Mínimo 4 caracteres"></div>
+      <div class="mf"><label>Confirmar senha</label><input type="password" id="cp-conf" placeholder="Repita a senha"></div>
+      <div class="err" id="cp-err"></div>
+    </div>
+    <div class="modal-foot"><button class="mb mb-sec" onclick="closeChpass()">Cancelar</button><button class="mb mb-save" onclick="saveChpass()">Alterar</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ══════════════════════════════════════════
+// CONFIG
+// ══════════════════════════════════════════
+const API = 'https://script.google.com/macros/s/AKfycby466aLBSmQ5ztL1GIA5_--LhVOuUYMsoZUnQau40JVbXfgDzf6zkhi456_906GqsZt/exec';
+
+// ══ BASE DATA ══
+const BASE_ACCOUNTS = [
+  {associado:"MARILISY CORRETORA DE SEGUROS DE VIDA LTDA",conta:"21983-5",periodo:"01/05/2026 a 02/06/2026",saldo_anterior:348.63,rows:[{data:"04/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:2787.4},{data:"04/05/2026",desc:"AMIL ASSISTENCIA MEDICA INTER",doc:"094509",valor:7219.75},{data:"04/05/2026",desc:"QUALICORP CONSULT",doc:"PIX_CRED",valor:322.42},{data:"04/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:555.78},{data:"04/05/2026",desc:"LUCINEIDE FIRMO DE PAU",doc:"PIX_DEB",valor:-180},{data:"04/05/2026",desc:"ITAU UNIBANCO H",doc:"",valor:-3481.12},{data:"04/05/2026",desc:"XS TEAM SUPLEMENTOS",doc:"CX904988",valor:-973.14},{data:"04/05/2026",desc:"ALLCARE BENEFICIO",doc:"PIX_CRED",valor:69.13},{data:"04/05/2026",desc:"ALLCARE BENEFICIO",doc:"PIX_CRED",valor:47.06},{data:"04/05/2026",desc:"BEST S OPERADORA DE",doc:"402883",valor:5343.62},{data:"04/05/2026",desc:"Carlos Augusto Alves",doc:"PIX_CRED",valor:153.92},{data:"05/05/2026",desc:"Leadmark Inteligenc",doc:"PIX_DEB",valor:-800},{data:"05/05/2026",desc:"Francisca Girlane Gu",doc:"PIX_CRED",valor:650},{data:"05/05/2026",desc:"Glauba Rafhaela Tavare",doc:"PIX_DEB",valor:-62},{data:"05/05/2026",desc:"BEM MAIS GESTORA DE",doc:"PIX_DEB",valor:-44.7},{data:"05/05/2026",desc:"FROTA CYSNE CONTABI",doc:"PIX_DEB",valor:-1621},{data:"06/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:1526.31},{data:"06/05/2026",desc:"LIV LINHAS INTELI",doc:"PIX_CRED",valor:263.11},{data:"06/05/2026",desc:"CORPORE ADMINISTR",doc:"PIX_CRED",valor:1452.29},{data:"06/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:1106.41},{data:"07/05/2026",desc:"AMIL ASSISTENCIA MEDICA INTER",doc:"042120",valor:16690.63},{data:"07/05/2026",desc:"MARILISY MELO MARTINS",doc:"PIX_DEB",valor:-11595.81},{data:"07/05/2026",desc:"3G ASSESSORIA DE BE",doc:"CX901408",valor:-3691.19},{data:"07/05/2026",desc:"Eveline Ferreira Bezer",doc:"PIX_DEB",valor:-1246.92},{data:"07/05/2026",desc:"Ester Gregório Vasconc",doc:"PIX_DEB",valor:-1652.65},{data:"07/05/2026",desc:"ROMULO DOS SANTOS CRUZ",doc:"PIX_DEB",valor:-4163.33},{data:"07/05/2026",desc:"Glauba Rafhaela Tavare",doc:"PIX_DEB",valor:-4706.32},{data:"07/05/2026",desc:"Glauba Rafhaela Tavare",doc:"PIX_DEB",valor:-2598.26},{data:"07/05/2026",desc:"TALYTA KARLA TAVARES M",doc:"PIX_DEB",valor:-320.1},{data:"07/05/2026",desc:"Hadassa Cavalcante Sil",doc:"PIX_DEB",valor:-80},{data:"07/05/2026",desc:"ALGAR",doc:"PIX_DEB",valor:-260.7},{data:"07/05/2026",desc:"COMPANHIA DE AGUA E",doc:"PIX_DEB",valor:-327.23},{data:"07/05/2026",desc:"Alan dos Santos Araújo",doc:"PIX_DEB",valor:-550},{data:"08/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:450.41},{data:"08/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:1796.44},{data:"08/05/2026",desc:"MARILISY MELO MA",doc:"SI00586",valor:20000},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-1582.24},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-915.53},{data:"08/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-770.04},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-637.41},{data:"08/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-630.19},{data:"08/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-200.91},{data:"08/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-539.11},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-564.33},{data:"08/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-431.91},{data:"08/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-106.02},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-272.15},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-1027.62},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-303.25},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-279.18},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-82.55},{data:"08/05/2026",desc:"PICPAY INSTITUI",doc:"",valor:-203.69},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-792.7},{data:"08/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-283.76},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-319.54},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-385.22},{data:"08/05/2026",desc:"BANCO INTER DEP",doc:"",valor:-2098.53},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-1921.97},{data:"08/05/2026",desc:"VICTOR COSTA",doc:"PIX_DEB",valor:-1365.74},{data:"08/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-500},{data:"11/05/2026",desc:"INTEGR.CAPITAL SUBSCRITO",doc:"MENSAL",valor:-110},{data:"11/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:772.42},{data:"11/05/2026",desc:"BEST S OPERADORA DE",doc:"818755",valor:3852.97},{data:"11/05/2026",desc:"LUCINEIDE FIRMO DE PAU",doc:"PIX_DEB",valor:-180},{data:"11/05/2026",desc:"SERVIS ELETRONI",doc:"",valor:-379.34},{data:"11/05/2026",desc:"ENEL DISTRIBUICAO C",doc:"PIX_DEB",valor:-392.78},{data:"11/05/2026",desc:"TANIRA NAPIRALLA",doc:"PIX_CRED",valor:1250},{data:"11/05/2026",desc:"ART LINK TECNOL",doc:"",valor:-1153.66},{data:"11/05/2026",desc:"HSE SERVICOS DE",doc:"",valor:-150},{data:"12/05/2026",desc:"3G CORRETORA DE S",doc:"CX512356",valor:1000},{data:"12/05/2026",desc:"LEADMARK INTELIGE",doc:"CX515334",valor:29000},{data:"12/05/2026",desc:"GIVANILDO ALMEIDA DE",doc:"CX517104",valor:26000},{data:"12/05/2026",desc:"MARILISY MELO MARTIN",doc:"CX518638",valor:39000},{data:"12/05/2026",desc:"MARILISY MELO",doc:"PIX_CRED",valor:55760.55},{data:"12/05/2026",desc:"GOOGLE BRASIL I",doc:"",valor:-159760.55},{data:"12/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:4380.13},{data:"12/05/2026",desc:"JOSE ELIANO FROTA CY",doc:"PIX_CRED",valor:400},{data:"12/05/2026",desc:"FELIPE FURTADO CA",doc:"PIX_CRED",valor:7057.99},{data:"13/05/2026",desc:"MARILISY MELO MA",doc:"SI00068",valor:-10000},{data:"13/05/2026",desc:"RAIMUNDO NONATO TEIXEI",doc:"PIX_DEB",valor:-120},{data:"13/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:1049.63},{data:"14/05/2026",desc:"AMIL ASSISTENCIA MEDICA INTER",doc:"228828",valor:18293.66},{data:"14/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:1387.94},{data:"14/05/2026",desc:"MARILISY MELO MARTINS",doc:"PIX_DEB",valor:-13247.19},{data:"14/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-1493.3},{data:"14/05/2026",desc:"VICTOR COSTA",doc:"PIX_DEB",valor:-4702.63},{data:"14/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-484.14},{data:"14/05/2026",desc:"DOUTORES EM VENDAS",doc:"PIX_DEB",valor:-1250},{data:"14/05/2026",desc:"FRANCISCA KELVIA COELH",doc:"PIX_DEB",valor:-187.35},{data:"14/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:1626.29},{data:"15/05/2026",desc:"PARCELA",doc:"C50330577",valor:-16173.62},{data:"15/05/2026",desc:"HUMANA SAUDE NORD",doc:"PIX_CRED",valor:15.05},{data:"15/05/2026",desc:"HAPVIDA ASSISTE",doc:"",valor:-980.17},{data:"15/05/2026",desc:"VIVO",doc:"VIVO",valor:-108.59},{data:"15/05/2026",desc:"QUALICORP CONSULT",doc:"PIX_CRED",valor:484.26},{data:"15/05/2026",desc:"QUALICORP CONSULT",doc:"PIX_CRED",valor:97.61},{data:"15/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:1380.39},{data:"15/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:986.01},{data:"15/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:169.35},{data:"18/05/2026",desc:"DEB.CTA.FATURA",doc:"020048521",valor:-14.16},{data:"18/05/2026",desc:"FELIPE FURTADO CA",doc:"PIX_CRED",valor:4165.64},{data:"19/05/2026",desc:"Givanildo Almeida de A",doc:"PIX_DEB",valor:-700},{data:"19/05/2026",desc:"LUCINEIDE FIRMO DE PAU",doc:"PIX_DEB",valor:-180},{data:"19/05/2026",desc:"FELIPE FURTADO CA",doc:"PIX_CRED",valor:799.76},{data:"19/05/2026",desc:"CORPORE ADM BENEF",doc:"PIX_CRED",valor:2740.02},{data:"19/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:3175.74},{data:"20/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:1340.99},{data:"20/05/2026",desc:"CEF MATRIZ",doc:"PIX_DEB",valor:-1483.16},{data:"20/05/2026",desc:"RECEITA FEDERAL",doc:"PIX_DEB",valor:-2307.39},{data:"20/05/2026",desc:"3G ASSESSORIA DE BE",doc:"CX966510",valor:-3000},{data:"20/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:1213.02},{data:"20/05/2026",desc:"AFFIX CORRETORA DE SEGUROS LT",doc:"187048",valor:516.09},{data:"20/05/2026",desc:"AFFIX CORRETORA DE SEGUROS LT",doc:"187265",valor:85.99},{data:"20/05/2026",desc:"AFFIX CORRETORA DE SEGUROS LT",doc:"187265",valor:146.76},{data:"20/05/2026",desc:"ALTER CORRETORA DE SEGUROS LT",doc:"187726",valor:703.26},{data:"20/05/2026",desc:"AFFIX CORRETORA DE SEGUROS LT",doc:"188268",valor:403.16},{data:"21/05/2026",desc:"AMIL ASSISTENCIA MEDICA INTER",doc:"221177",valor:14364.83},{data:"21/05/2026",desc:"MARILISY MELO MARTINS",doc:"PIX_DEB",valor:-13529.89},{data:"21/05/2026",desc:"FELIPE FURTADO CA",doc:"PIX_CRED",valor:1069.26},{data:"21/05/2026",desc:"TVR - TECNOLOGIA",doc:"PIX_CRED",valor:4040.06},{data:"22/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:2027.61},{data:"22/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:1458.12},{data:"22/05/2026",desc:"Marilisy Melo Martins",doc:"PIX_DEB",valor:-700},{data:"22/05/2026",desc:"RECEITA FEDERAL",doc:"PIX_DEB",valor:-12287.32},{data:"22/05/2026",desc:"COTADOR SIMPLIFICAD",doc:"PIX_DEB",valor:-36.01},{data:"22/05/2026",desc:"3G CORRETORA DE SEG",doc:"CX544696",valor:-1700},{data:"22/05/2026",desc:"FELIPE FURTADO CA",doc:"PIX_CRED",valor:6127.6},{data:"22/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:752.08},{data:"22/05/2026",desc:"ALLCARE BENEFICIO",doc:"PIX_CRED",valor:92.62},{data:"25/05/2026",desc:"JOSE ELIANO FROTA CY",doc:"PIX_CRED",valor:950.01},{data:"25/05/2026",desc:"3G CORRETORA DE SEG",doc:"CX996331",valor:-8500},{data:"25/05/2026",desc:"BRASIL PORTAS AUTOM",doc:"PIX_DEB",valor:-100},{data:"25/05/2026",desc:"PJBANK PAGAMENT",doc:"",valor:-2531.5},{data:"25/05/2026",desc:"CESTA DE RELACIONAMENTO",doc:"",valor:-70},{data:"25/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:616.26},{data:"25/05/2026",desc:"LIV LINHAS INTELI",doc:"PIX_CRED",valor:428.42},{data:"25/05/2026",desc:"LIV LINHAS INTELI",doc:"PIX_CRED",valor:375.26},{data:"25/05/2026",desc:"LEADMARK INTELIGE",doc:"CX122265",valor:1215.75},{data:"25/05/2026",desc:"BEST S OPERADORA DE",doc:"705789",valor:13058.43},{data:"25/05/2026",desc:"ODONT - OPERADORA",doc:"PIX_CRED",valor:384.4},{data:"25/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:1464.98},{data:"26/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:500},{data:"26/05/2026",desc:"LUCINEIDE FIRMO DE PAU",doc:"PIX_DEB",valor:-180},{data:"26/05/2026",desc:"XS TEAM SUPLEMENTOS",doc:"CX666693",valor:-791.59},{data:"26/05/2026",desc:"TELEFONICA BRAS",doc:"PIX_DEB",valor:-86.73},{data:"26/05/2026",desc:"DEB. RECARGA CELULAR",doc:"REC219989",valor:-20},{data:"26/05/2026",desc:"DEB. RECARGA CELULAR",doc:"REC219970",valor:-20},{data:"26/05/2026",desc:"FELIPE FURTADO CA",doc:"PIX_CRED",valor:3048.32},{data:"27/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:809.42},{data:"27/05/2026",desc:"TVR - TECNOLOGIA",doc:"PIX_CRED",valor:1628.96},{data:"27/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:583.22},{data:"27/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:1005.75},{data:"27/05/2026",desc:"Leadmark Inteli",doc:"",valor:-15100},{data:"28/05/2026",desc:"AMIL ASSISTENCIA MEDICA INTER",doc:"148289",valor:994.18},{data:"28/05/2026",desc:"CAJU",doc:"PIX_DEB",valor:-2721.27},{data:"28/05/2026",desc:"Ester Gregório Vasconc",doc:"PIX_DEB",valor:-10.8},{data:"28/05/2026",desc:"Ester Gregório Vasconc",doc:"PIX_DEB",valor:-216},{data:"28/05/2026",desc:"Eveline Ferreira Bezer",doc:"PIX_DEB",valor:-183.6},{data:"28/05/2026",desc:"FROTA CYSNE CONTA",doc:"PIX_CRED",valor:419.83},{data:"28/05/2026",desc:"3G CORRETORA DE SEG",doc:"CX959532",valor:-6964.15},{data:"28/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:2766.88},{data:"28/05/2026",desc:"FELIPE FURTADO CA",doc:"PIX_CRED",valor:2414.58},{data:"29/05/2026",desc:"ALAN DOS SANTOS ARAUJO",doc:"PIX_DEB",valor:-89.9},{data:"29/05/2026",desc:"MEGA ADMINISTRA",doc:"",valor:-4502.14},{data:"29/05/2026",desc:"3G CONSULTORIA DE",doc:"PIX_CRED",valor:183.43},{data:"29/05/2026",desc:"INFINITI MARKETIN",doc:"PIX_CRED",valor:8.41},{data:"29/05/2026",desc:"TVR HUB",doc:"PIX_CRED",valor:1628.05},{data:"29/05/2026",desc:"QUALICORP CONSULT",doc:"PIX_CRED",valor:331.8},{data:"29/05/2026",desc:"MARILISY MELO MARTIN",doc:"CX878465",valor:53562.43},{data:"29/05/2026",desc:"LEADMARK INTELIGE",doc:"CX881999",valor:17900.62},{data:"29/05/2026",desc:"LEADMARK INTE",doc:"SI00475",valor:30000},{data:"29/05/2026",desc:"GIVANILDO ALMEID",doc:"SI00554",valor:25336.07},{data:"29/05/2026",desc:"LEADMARK INTELIGE",doc:"CX912377",valor:5301.51},{data:"29/05/2026",desc:"GIVANILDO ALMEIDA DE",doc:"CX917131",valor:10000},{data:"29/05/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:2567.99},{data:"29/05/2026",desc:"GOOGLE BRASIL I",doc:"",valor:-148224.17},{data:"01/06/2026",desc:"DOUTORES EM VENDA",doc:"PIX_CRED",valor:1500.16},{data:"01/06/2026",desc:"LUCINEIDE FIRMO DE PAU",doc:"PIX_DEB",valor:-212.99},{data:"01/06/2026",desc:"ITAU UNIBANCO H",doc:"",valor:-3962.59},{data:"01/06/2026",desc:"IOF ADICIONAL PJ-CH. ESPE",doc:"Iof.ADic.",valor:-101.53},{data:"01/06/2026",desc:"IOF BASICO CH PJ",doc:"Iof.BAsic",valor:-7.57},{data:"02/06/2026",desc:"MARILISY MELO MARTIN",doc:"CX247572",valor:6170.53}]},
+  {associado:"3G CORRETORA DE SEGUROS DE VIDA LTDA",conta:"26486-5",periodo:"01/05/2026 a 02/06/2026",saldo_anterior:921.62,rows:[{data:"04/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:416.36},{data:"04/05/2026",desc:"BRADESCO SAUDE S A",doc:"330906",valor:1.41},{data:"04/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:48.86},{data:"04/05/2026",desc:"ENEL DISTRIBUIC",doc:"",valor:-247.95},{data:"04/05/2026",desc:"ODONTOPREV S/A",doc:"357365",valor:221.64},{data:"05/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:370.43},{data:"05/05/2026",desc:"BRADESCO SAUDE S A",doc:"617570",valor:599.65},{data:"05/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:62.87},{data:"05/05/2026",desc:"FROTA CYSNE CONTABI",doc:"PIX_DEB",valor:-373.73},{data:"06/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:113.54},{data:"06/05/2026",desc:"BRADESCO SAUDE S A",doc:"864143",valor:761.29},{data:"06/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:801.65},{data:"06/05/2026",desc:"ODONTOPREV S/A",doc:"927147",valor:1257.39},{data:"07/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:673.29},{data:"07/05/2026",desc:"BRADESCO SAUDE S A",doc:"205615",valor:50.63},{data:"07/05/2026",desc:"ODONTOPREV S/A",doc:"284630",valor:201.52},{data:"07/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-650},{data:"08/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:62.62},{data:"08/05/2026",desc:"ODONTOPREV S/A",doc:"485541",valor:835.55},{data:"08/05/2026",desc:"Leadmark Inteligenc",doc:"PIX_DEB",valor:-800},{data:"08/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:165.79},{data:"08/05/2026",desc:"BRADESCO SAUDE S A",doc:"514298",valor:78.37},{data:"08/05/2026",desc:"BANCO INTER DEP",doc:"",valor:-1000},{data:"08/05/2026",desc:"TALYTA KARLA TAVARES M",doc:"PIX_DEB",valor:-200},{data:"08/05/2026",desc:"BANCO INTER DEP",doc:"",valor:-4000},{data:"11/05/2026",desc:"INTEGR.CAPITAL SUBSCRITO",doc:"INTEGR",valor:-100},{data:"11/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:2456.92},{data:"11/05/2026",desc:"ODONTOPREV S/A",doc:"815009",valor:2385.99},{data:"11/05/2026",desc:"ANTONIA DA SILVA SOUSA",doc:"PIX_DEB",valor:-500},{data:"11/05/2026",desc:"CICERO TEIXEIRA DA COS",doc:"PIX_DEB",valor:-55},{data:"11/05/2026",desc:"C W B DA SILVA TELE",doc:"PIX_DEB",valor:-150},{data:"12/05/2026",desc:"Marilisy Melo Martins",doc:"PIX_DEB",valor:-700},{data:"12/05/2026",desc:"MARILISY CORRETORA",doc:"CX512357",valor:-1000},{data:"12/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:104.75},{data:"12/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:411.41},{data:"12/05/2026",desc:"BRADESCO SAUDE S A",doc:"955113",valor:295.81},{data:"12/05/2026",desc:"BRADESCO SAUDE S A",doc:"955092",valor:0.74},{data:"12/05/2026",desc:"ODONTOPREV S/A",doc:"988170",valor:1953.38},{data:"13/05/2026",desc:"KARLOS JOSE CUNHA",doc:"PIX_DEB",valor:-2300},{data:"13/05/2026",desc:"XS TEAM SUPLEMENTOS",doc:"CX298282",valor:-190.54},{data:"13/05/2026",desc:"A C PRODUTOS DE",doc:"",valor:-320.96},{data:"13/05/2026",desc:"ODONTOPREV S/A",doc:"121526",valor:3743.06},{data:"13/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-1148.7},{data:"13/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:57.97},{data:"13/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:519.32},{data:"14/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:741.7},{data:"14/05/2026",desc:"BRADESCO SAUDE S A",doc:"318888",valor:78.03},{data:"14/05/2026",desc:"FRANCISCA KELVIA COELH",doc:"PIX_DEB",valor:-1867.65},{data:"14/05/2026",desc:"Gustavo Rodrigues de A",doc:"PIX_DEB",valor:-700},{data:"14/05/2026",desc:"ODONTOPREV S/A",doc:"329230",valor:736.08},{data:"14/05/2026",desc:"ODONTOPREV S/A",doc:"329436",valor:1874.05},{data:"15/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:73.55},{data:"15/05/2026",desc:"CESTA DE RELACIONAMENTO",doc:"",valor:-70},{data:"15/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:214.8},{data:"15/05/2026",desc:"ODONTOPREV S/A",doc:"601705",valor:2101.63},{data:"18/05/2026",desc:"BRADESCO SAUDE S A",doc:"737134",valor:142.98},{data:"18/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:373.62},{data:"18/05/2026",desc:"ODONTOPREV S/A",doc:"763568",valor:734.99},{data:"19/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:248.22},{data:"19/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:68.55},{data:"20/05/2026",desc:"RECEITA FEDERAL",doc:"PIX_DEB",valor:-519.31},{data:"20/05/2026",desc:"RECEITA FEDERAL",doc:"PIX_DEB",valor:-6150.44},{data:"20/05/2026",desc:"ODONTOPREV S/A",doc:"109691",valor:3113.86},{data:"20/05/2026",desc:"BRADESCO SAUDE S A",doc:"118810",valor:444.3},{data:"20/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:423.9},{data:"21/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:64.05},{data:"21/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:286.38},{data:"21/05/2026",desc:"ODONTOPREV S/A",doc:"285005",valor:1158.28},{data:"21/05/2026",desc:"ODONTOPREV S/A",doc:"284906",valor:1216.79},{data:"22/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:142.94},{data:"22/05/2026",desc:"BRADESCO SAUDE S A",doc:"451031",valor:68.92},{data:"22/05/2026",desc:"BRADESCO SAUDE S A",doc:"451268",valor:101.39},{data:"22/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-394.12},{data:"22/05/2026",desc:"BANCO INTER DEP",doc:"",valor:-365.74},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-328.25},{data:"22/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-766.19},{data:"22/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-296.14},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-486.52},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-295.4},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-351.59},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-34.68},{data:"22/05/2026",desc:"99 PAY INSTITUI",doc:"",valor:-373.83},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-99.46},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-158.64},{data:"22/05/2026",desc:"PICPAY INSTITUI",doc:"",valor:-94.54},{data:"22/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-282.51},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-426.65},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-759.78},{data:"22/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-329},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-271.22},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-1642.12},{data:"22/05/2026",desc:"MERCADO PAGO IN",doc:"",valor:-580.88},{data:"22/05/2026",desc:"NU PAGAMENTOS S",doc:"",valor:-52.45},{data:"22/05/2026",desc:"FRANCISCA KELVIA COELH",doc:"PIX_DEB",valor:-12.68},{data:"22/05/2026",desc:"MARILISY CORRETOR",doc:"CX544695",valor:1700},{data:"22/05/2026",desc:"VICTOR COSTA",doc:"PIX_DEB",valor:-4142.35},{data:"25/05/2026",desc:"ODONTOPREV S/A",doc:"627310",valor:781.31},{data:"25/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:125.98},{data:"25/05/2026",desc:"BRADESCO SAUDE S A",doc:"654414",valor:1434.41},{data:"25/05/2026",desc:"MARILISY CORRETOR",doc:"CX996330",valor:8500},{data:"25/05/2026",desc:"3G ASSESSORIA DE BE",doc:"CX06844",valor:-8149.7},{data:"25/05/2026",desc:"SICREDI",doc:"261078456",valor:-352.23},{data:"25/05/2026",desc:"Gustavo Rodrigues de A",doc:"PIX_DEB",valor:-800},{data:"26/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:309.04},{data:"27/05/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:60.1},{data:"27/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:908.52},{data:"27/05/2026",desc:"BRADESCO SAUDE S A",doc:"033451",valor:1387.3},{data:"27/05/2026",desc:"ODONTOPREV S/A",doc:"039134",valor:3042.05},{data:"28/05/2026",desc:"Leadmark Inteligenc",doc:"PIX_DEB",valor:-850},{data:"28/05/2026",desc:"MARILISY CORRETOR",doc:"CX959531",valor:6964.15},{data:"28/05/2026",desc:"MARILISY MELO MARTINS",doc:"PIX_DEB",valor:-13454.75},{data:"28/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:223.63},{data:"28/05/2026",desc:"ODONTOPREV S/A",doc:"251190",valor:862.17},{data:"29/05/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:279.09},{data:"29/05/2026",desc:"ODONTOPREV S/A",doc:"665596",valor:1069.66},{data:"01/06/2026",desc:"Givanildo Almeida de A",doc:"PIX_DEB",valor:-900},{data:"01/06/2026",desc:"SUL AMERICA SEGUR",doc:"PIX_CRED",valor:40.55},{data:"01/06/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:218.52},{data:"01/06/2026",desc:"SUL AMERICA ODONT",doc:"PIX_CRED",valor:60.19},{data:"01/06/2026",desc:"ENEL DISTRIBUICAO C",doc:"PIX_DEB",valor:-247.95},{data:"02/06/2026",desc:"SUL AMERICA COMPA",doc:"PIX_CRED",valor:579},{data:"02/06/2026",desc:"ODONTOPREV S/A",doc:"339910",valor:1105.07},{data:"02/06/2026",desc:"ODONTOPREV S/A",doc:"340294",valor:1474.47}]}
+];
+
+// ══ STATE ══
+let CUR=null, acctIdx=0, curTab='all', curRowId=null, editingUser=null;
+let USERS={}, META={}, EXTRA={};
+
+// ══ API (Google Sheets via Apps Script) ══
+async function apiGet(key){
+  const url=`${API}?action=get&key=${encodeURIComponent(key)}`;
+  const r=await fetch(url);const d=await r.json();
+  return d.value?JSON.parse(d.value):null;
+}
+async function apiSet(key,val){
+  const url=`${API}?action=set&key=${encodeURIComponent(key)}&value=${encodeURIComponent(JSON.stringify(val))}`;
+  await fetch(url);
+}
+
+// ══ LOAD/SAVE ══
+async function loadAll(){
+  showLoading('Carregando dados...');
+  try{
+    const [u,m,e]=await Promise.all([apiGet('users'),apiGet('meta'),apiGet('extra')]);
+    USERS=u||{};META=m||{};EXTRA=e||{};
+    if(!USERS['admin']){
+      USERS['admin']={pass:'3g2026',perms:['all','cred','deb'],isAdmin:true,provisional:false};
+      await apiSet('users',USERS);
+    }
+  }catch(err){showToast('Erro ao conectar. Verifique o Apps Script.');}
+  hideLoading();
+}
+async function saveUsers(){showLoading('Salvando...');await apiSet('users',USERS);hideLoading();}
+async function saveMeta(){await apiSet('meta',META);}
+async function saveExtra(){showLoading('Salvando...');await apiSet('extra',EXTRA);hideLoading();}
+
+// ══ HELPERS ══
+function fmt(v){return new Intl.NumberFormat('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(Math.abs(v));}
+function ts(){return new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});}
+function rkey(ai,i){return`${ai}_${i}`;}
+function showLoading(t){document.getElementById('loading-txt').textContent=t||'Carregando...';document.getElementById('loading').classList.add('show');}
+function hideLoading(){document.getElementById('loading').classList.remove('show');}
+
+// ══ LOGIN ══
+async function doLogin(){
+  const u=document.getElementById('l-user').value.trim().toLowerCase();
+  const p=document.getElementById('l-pass').value;
+  const err=document.getElementById('l-err');
+  const btn=document.getElementById('login-btn');
+  if(!u||!p){err.textContent='Preencha usuário e senha.';return;}
+  btn.disabled=true;btn.textContent='Carregando...';
+  await loadAll();
+  btn.disabled=false;btn.textContent='Entrar';
+  const usr=USERS[u];
+  if(!usr){err.textContent='Usuário não encontrado.';return;}
+  if(usr.pass!==p){err.textContent='Senha incorreta.';return;}
+  CUR=u;
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('u-label').textContent=u;
+  document.getElementById('u-av').textContent=u[0].toUpperCase();
+  if(usr.isAdmin)document.getElementById('admin-btn').style.display='';
+  if(usr.provisional)document.getElementById('prov-banner').style.display='flex';
+  buildMonthFilter();buildTabs();updateCards();render();
+}
+function doLogout(){
+  CUR=null;
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('app').style.display='none';
+  document.getElementById('l-pass').value='';
+  document.getElementById('l-err').textContent='';
+  document.getElementById('admin-btn').style.display='none';
+  document.getElementById('prov-banner').style.display='none';
+  showExtrato();
+}
+
+// ══ TABS ══
+function buildTabs(){
+  const perms=USERS[CUR]?.perms||[];
+  const row=document.getElementById('tabs-row');row.innerHTML='';
+  [{k:'all',lbl:'Todos',cls:'ta'},{k:'cred',lbl:'Créditos',cls:'tc'},{k:'deb',lbl:'Débitos',cls:'td'}].forEach(d=>{
+    if(!perms.includes(d.k))return;
+    const b=document.createElement('button');
+    b.className=`tab ${d.cls}${d.k===curTab?' on':''}`;b.textContent=d.lbl;
+    b.onclick=()=>{curTab=d.k;document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));b.classList.add('on');render();};
+    row.appendChild(b);
+  });
+  if(!perms.includes(curTab)&&perms.length>0)curTab=perms[0];
+}
+
+// ══ MONTH FILTER ══
+function buildMonthFilter(){
+  const sel=document.getElementById('mes-sel');
+  const months=new Set();
+  BASE_ACCOUNTS.forEach(a=>a.rows.forEach(r=>{const[d,m,y]=r.data.split('/');months.add(`${y}-${m}`);}));
+  sel.innerHTML='<option value="">Todos os meses</option>';
+  [...months].sort().forEach(k=>{
+    const[y,m]=k.split('-');
+    const lbl=new Date(y,m-1).toLocaleDateString('pt-BR',{month:'long',year:'numeric'});
+    const o=document.createElement('option');o.value=k;o.textContent=lbl.charAt(0).toUpperCase()+lbl.slice(1);sel.appendChild(o);
+  });
+}
+
+// ══ ACCOUNT ══
+function setAcct(i,el){acctIdx=i;document.querySelectorAll('.abtn').forEach(b=>b.classList.remove('on'));el.classList.add('on');updateCards();render();}
+
+// ══ CARDS ══
+function updateCards(){
+  const a=BASE_ACCOUNTS[acctIdx];
+  const extras=EXTRA[acctIdx]||[];
+  const all=[...a.rows,...extras];
+  const mes=document.getElementById('mes-sel')?.value||'';
+  const fil=mes?all.filter(r=>{const[d,m,y]=r.data.split('/');return`${y}-${m}`===mes;}):all;
+  const tc=fil.filter(r=>r.valor>0).reduce((s,r)=>s+r.valor,0);
+  const td=fil.filter(r=>r.valor<0).reduce((s,r)=>s+r.valor,0);
+  const res=tc+td;
+  document.getElementById('c1').textContent='R$ '+fmt(tc);
+  document.getElementById('c1s').textContent=fil.filter(r=>r.valor>0).length+' lançamentos';
+  document.getElementById('c2').textContent='R$ '+fmt(td);
+  document.getElementById('c2s').textContent=fil.filter(r=>r.valor<0).length+' lançamentos';
+  document.getElementById('c3').textContent=(res<0?'- ':'')+'R$ '+fmt(res);
+  document.getElementById('c3').style.color=res>=0?'var(--green)':'var(--red)';
+  document.getElementById('c3s').textContent=a.periodo;
+}
+
+// ══ RENDER ══
+function render(){
+  updateCards();
+  const a=BASE_ACCOUNTS[acctIdx];
+  const extras=EXTRA[acctIdx]||[];
+  const all=[...a.rows.map((r,i)=>({...r,_k:rkey(acctIdx,i)})),...extras.map((r,i)=>({...r,_k:rkey(acctIdx,'x'+i)}))];
+  const q=document.getElementById('srch').value.toLowerCase();
+  const mes=document.getElementById('mes-sel').value;
+  let data=all.filter(r=>{
+    if(curTab==='cred'&&r.valor<=0)return false;
+    if(curTab==='deb'&&r.valor>=0)return false;
+    if(mes){const[d,m,y]=r.data.split('/');if(`${y}-${m}`!==mes)return false;}
+    if(q&&!(r.desc+' '+r.doc+' '+r.data).toLowerCase().includes(q))return false;
+    return true;
+  });
+  document.getElementById('thead-row').innerHTML='<th>Data</th><th>Nome / Descrição</th><th>Doc</th><th>Categoria</th><th>Tipo</th><th class="r">Valor (R$)</th>';
+  const tbody=document.getElementById('tbody');const none=document.getElementById('none-msg');
+  tbody.innerHTML='';
+  document.getElementById('cnt').textContent=data.length+' lançamento'+(data.length!==1?'s':'');
+  if(!data.length){none.style.display='block';return;}none.style.display='none';
+  data.forEach(r=>{
+    const isCred=r.valor>0;const m=META[r._k]||{};
+    const tr=document.createElement('tr');if(m.done)tr.classList.add('done');
+    const chk=m.done?'<span class="check-icon">✓</span>':'';
+    const nt=m.note?`<span class="note-icon" title="${(m.note||'').replace(/"/g,"'")}">📝</span>`:'';
+    const cat=m.cat?`<span class="cat-badge">${m.cat}</span>`:'<span style="color:var(--m2)">—</span>';
+    const dsc=r.desc||'<span style="color:var(--m2);font-style:italic">—</span>';
+    tr.innerHTML=`<td class="dt">${r.data}</td><td>${chk}${dsc}${nt}</td><td style="color:var(--m2);font-size:11px">${r.doc||'—'}</td><td>${cat}</td><td><span class="pill ${isCred?'pill-c':'pill-d'}">${isCred?'crédito':'débito'}</span></td><td class="val" style="color:${isCred?'var(--green)':'var(--red)'}">${isCred?'+':'-'} ${fmt(r.valor)}</td>`;
+    tr.onclick=()=>openDet(r._k,r);tbody.appendChild(tr);
+  });
+}
+
+// ══ DETAIL ══
+function openDet(key,r){
+  curRowId=key;const m=META[key]||{};
+  document.getElementById('det-title').textContent=r.desc||'Lançamento';
+  document.getElementById('det-sub').textContent=`${r.data}  ·  ${r.valor>0?'+':'-'} R$ ${fmt(r.valor)}  ·  ${r.doc||'—'}`;
+  document.getElementById('det-cat').value=m.cat||'';
+  document.getElementById('det-note').value=m.note||'';
+  document.getElementById('det-done').checked=m.done||false;
+  const hist=m.log||[];
+  document.getElementById('det-log').innerHTML=hist.length?hist.slice().reverse().map(l=>`<div class="act-item"><span class="act-who">${l.who}</span> ${l.msg}<span class="act-time">${l.ts}</span></div>`).join(''):'<div style="font-size:11px;color:var(--m2)">Nenhuma alteração ainda.</div>';
+  document.getElementById('det-ov').classList.add('open');
+}
+function closeDet(){document.getElementById('det-ov').classList.remove('open');curRowId=null;}
+async function saveDet(){
+  const m=META[curRowId]||{};
+  const nc=document.getElementById('det-cat').value;
+  const nn=document.getElementById('det-note').value;
+  const nd=document.getElementById('det-done').checked;
+  const log=m.log||[];
+  if(nc!==(m.cat||''))log.push({who:CUR,msg:`categoria → ${nc||'—'}`,ts:ts()});
+  if(nn!==(m.note||''))log.push({who:CUR,msg:'anotação atualizada',ts:ts()});
+  if(nd!==(m.done||false))log.push({who:CUR,msg:nd?'conferido ✓':'removeu conferido',ts:ts()});
+  META[curRowId]={...m,cat:nc,note:nn,done:nd,log};
+  await saveMeta();closeDet();render();showToast('Salvo ✓');
+}
+
+// ══ ADD ══
+function openAdd(){document.getElementById('add-ov').classList.add('open');}
+function closeAdd(){document.getElementById('add-ov').classList.remove('open');}
+async function saveAdd(){
+  const dt=document.getElementById('a-date').value;
+  const tipo=document.getElementById('a-tipo').value;
+  const desc=document.getElementById('a-desc').value.trim();
+  const val=parseFloat(document.getElementById('a-val').value);
+  const doc=document.getElementById('a-doc').value.trim();
+  const cat=document.getElementById('a-cat').value;
+  const note=document.getElementById('a-note').value.trim();
+  if(!dt||!desc||isNaN(val)||val<=0){showToast('Preencha data, nome e valor.');return;}
+  const[y,mo,d]=dt.split('-');
+  if(!EXTRA[acctIdx])EXTRA[acctIdx]=[];
+  const idx=EXTRA[acctIdx].length;
+  EXTRA[acctIdx].push({data:`${d}/${mo}/${y}`,desc,doc,valor:tipo==='deb'?-val:val});
+  const key=rkey(acctIdx,'x'+idx);
+  if(cat||note)META[key]={cat,note,done:false,log:[{who:CUR,msg:'lançamento criado',ts:ts()}]};
+  await saveExtra();await saveMeta();closeAdd();render();
+  ['a-date','a-desc','a-val','a-doc','a-note'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('a-cat').value='';
+  showToast('Lançamento adicionado ✓');
+}
+
+// ══ USERS ══
+function showUsers(){document.getElementById('extratos-view').style.display='none';document.getElementById('users-page').style.display='block';renderUsers();}
+function showExtrato(){document.getElementById('users-page').style.display='none';document.getElementById('extratos-view').style.display='block';}
+function renderUsers(){
+  const grid=document.getElementById('users-grid');grid.innerHTML='';
+  Object.entries(USERS).forEach(([uname,u])=>{
+    const perms=u.perms||[];
+    const pt=perms.map(p=>({all:'<span class="perm-tag perm-all">Todos</span>',cred:'<span class="perm-tag perm-cred">Créditos</span>',deb:'<span class="perm-tag perm-deb">Débitos</span>'}[p]||'')).join('');
+    const prov=u.provisional?'<span class="perm-tag perm-temp">Senha provisória</span>':'';
+    const div=document.createElement('div');div.className='user-card';
+    div.innerHTML=`<div class="avatar" style="${u.isAdmin?'border-color:var(--yellow);color:var(--yellow);background:var(--yellow-bg)':''}">${uname[0].toUpperCase()}</div><div class="user-info"><div class="user-name">${uname}${u.isAdmin?' <span style="font-size:10px;color:var(--yellow)">admin</span>':''}</div><div class="user-perms">${pt}${prov}</div></div>${!u.isAdmin?`<button class="icon-btn" onclick='openEditUser("${uname}")'>Editar</button>`:''}`;
+    grid.appendChild(div);
+  });
+}
+function openNewUser(){
+  editingUser=null;
+  document.getElementById('usr-title').textContent='Novo Usuário';
+  document.getElementById('usr-name').value='';document.getElementById('usr-name').disabled=false;
+  document.getElementById('usr-pass').value='';document.getElementById('usr-pass').placeholder='Senha provisória';
+  ['p-all','p-cred','p-deb'].forEach(id=>document.getElementById(id).checked=false);
+  document.getElementById('usr-del-btn').style.display='none';
+  document.getElementById('usr-ov').classList.add('open');
+}
+function openEditUser(uname){
+  editingUser=uname;const u=USERS[uname];
+  document.getElementById('usr-title').textContent='Editar: '+uname;
+  document.getElementById('usr-name').value=uname;document.getElementById('usr-name').disabled=true;
+  document.getElementById('usr-pass').value='';document.getElementById('usr-pass').placeholder='Deixe vazio para não alterar';
+  document.getElementById('p-all').checked=(u.perms||[]).includes('all');
+  document.getElementById('p-cred').checked=(u.perms||[]).includes('cred');
+  document.getElementById('p-deb').checked=(u.perms||[]).includes('deb');
+  document.getElementById('usr-del-btn').style.display='';
+  document.getElementById('usr-ov').classList.add('open');
+}
+function closeUsr(){document.getElementById('usr-ov').classList.remove('open');editingUser=null;}
+async function saveUser(){
+  const uname=document.getElementById('usr-name').value.trim().toLowerCase();
+  const pass=document.getElementById('usr-pass').value;
+  const perms=[];
+  if(document.getElementById('p-all').checked)perms.push('all');
+  if(document.getElementById('p-cred').checked)perms.push('cred');
+  if(document.getElementById('p-deb').checked)perms.push('deb');
+  if(!uname){showToast('Informe o nome do usuário.');return;}
+  if(!editingUser&&!pass){showToast('Informe a senha provisória.');return;}
+  if(!perms.length){showToast('Selecione ao menos uma aba.');return;}
+  if(!editingUser&&USERS[uname]){showToast('Usuário já existe.');return;}
+  if(editingUser){USERS[editingUser].perms=perms;if(pass){USERS[editingUser].pass=pass;USERS[editingUser].provisional=true;}}
+  else{USERS[uname]={pass,perms,isAdmin:false,provisional:true};}
+  await saveUsers();closeUsr();renderUsers();showToast('Usuário salvo ✓');
+}
+async function deleteUser(){
+  if(!editingUser)return;
+  if(!confirm(`Excluir "${editingUser}"?`))return;
+  delete USERS[editingUser];await saveUsers();closeUsr();renderUsers();showToast('Excluído.');
+}
+
+// ══ CHANGE PASS ══
+function showChpass(){document.getElementById('cp-new').value='';document.getElementById('cp-conf').value='';document.getElementById('cp-err').textContent='';document.getElementById('cp-ov').classList.add('open');}
+function closeChpass(){document.getElementById('cp-ov').classList.remove('open');}
+async function saveChpass(){
+  const nw=document.getElementById('cp-new').value;
+  const cf=document.getElementById('cp-conf').value;
+  const err=document.getElementById('cp-err');
+  if(nw.length<4){err.textContent='Mínimo 4 caracteres.';return;}
+  if(nw!==cf){err.textContent='As senhas não coincidem.';return;}
+  USERS[CUR].pass=nw;USERS[CUR].provisional=false;
+  await saveUsers();closeChpass();document.getElementById('prov-banner').style.display='none';showToast('Senha alterada ✓');
+}
+
+// ══ TOAST ══
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);}
+
+// ══ AUTO-REFRESH a cada 20s ══
+setInterval(async()=>{
+  if(!CUR)return;
+  try{
+    const[m,e]=await Promise.all([apiGet('meta'),apiGet('extra')]);
+    if(m)META=m;if(e)EXTRA=e;render();
+  }catch{}
+},20000);
+</script>
+
+
+</body></html>
